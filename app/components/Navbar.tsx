@@ -54,14 +54,12 @@ const Navbar = () => {
                     <Link href="/about" className="text-slate-300 hover:text-[#00D4FF] text-sm font-medium transition-colors">About</Link>
                 </div>
 
-                <a
-                    href="https://internal.ammedtech.com/login"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <Link
+                    href="https://dms.ammedtech.com/login"
                     className="hidden lg:flex px-6 py-2 xl:px-8 rounded-full border border-[#00D4FF] text-[#00D4FF] text-sm font-bold tracking-wider hover:bg-[#00D4FF] hover:text-[#020617] hover:shadow-[0_0_20px_rgba(0,212,255,0.5)] transition-all duration-300"
                 >
                     CLIENT LOGIN
-                </a>
+                </Link>
 
                 {/* Mobile Menu Button */}
                 <button
@@ -119,15 +117,13 @@ const Navbar = () => {
                                     About
                                 </Link>
                                 <div className="p-4 bg-[#020617]/50">
-                                    <a
-                                        href="https://internal.ammedtech.com/login"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                    <Link
+                                        href="https://dms.ammedtech.com/login"
                                         onClick={toggleMobileMenu}
                                         className="flex items-center justify-center w-full px-4 py-2 rounded-lg bg-[#00D4FF]/10 text-[#00D4FF] text-xs font-bold tracking-wider border border-[#00D4FF]/50 hover:bg-[#00D4FF] hover:text-[#020617] transition-all duration-300"
                                     >
                                         CLIENT LOGIN
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </motion.div>

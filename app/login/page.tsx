@@ -19,20 +19,12 @@ export default function LoginPage() {
         // Simulate API check
         const code = companyCode.toUpperCase().trim();
 
-        if (code === 'AM' || code === 'ANMINH' || code === 'AMGROUP') {
-            // Redirect to An Minh Admin Portal (Client App)
-            window.location.href = 'https://dms.ammedtech.com/admin';
-
-        } else if (code === 'AM01' || code === 'TDV001') {
-            // Redirect to TDV Portal (Client App)
-            window.location.href = 'https://dms.ammedtech.com/login-simple';
-
-        } else if (code === 'TEST' || code === 'DEMO') {
-            alert('Redirecting to Demo Portal...');
-            setIsLoading(false);
+        if (code === 'AM') {
+            // Redirect to An Minh Admin Portal
+            window.location.href = 'https://dms.ammedtech.com/Anminh/admin';
         } else {
-            setError('Invalid Company Code. Please contact your administrator.');
-            setIsLoading(false);
+            // Redirect to General DMS Portal for other codes
+            window.location.href = 'https://dms.ammedtech.com';
         }
     };
 
