@@ -2,109 +2,130 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Activity, ArrowRight, Building2, AlertCircle } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { ArrowLeft, ShieldCheck, Building2 } from 'lucide-react';
+import Link from 'next/link';
 
-export default function LoginPage() {
-    const [companyCode, setCompanyCode] = useState('');
-    const [error, setError] = useState('');
+const LoginPage = () => {
+    const [customerId, setCustomerId] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const router = useRouter();
+    const [error, setError] = useState('');
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
-        setIsLoading(true);
         setError('');
+        setIsLoading(true);
 
-        // Simulate API check
-        const code = companyCode.toUpperCase().trim();
+        const id = customerId.trim().toUpperCase();
 
-        if (code === 'AM') {
-            // Redirect to An Minh Admin Portal
-            window.location.href = 'https://dms.ammedtech.com/Anminh/admin';
-        } else {
-            // Redirect to General DMS Portal for other codes
-            window.location.href = 'https://dms.ammedtech.com';
+        if (!id) {
+            setError('Please enter your Customer ID');
+            setIsLoading(false);
+            return;
         }
+
+        // Simulate processing delay for better UX
+        setTimeout(() => {
+            if (id === 'AM') {
+                // Redirect to Admin Portal
+                window.location.href = 'https://dms.ammedtech.com/Anminh/admin';
+            } else {
+                // Redirect to General DMS Login
+                window.location.href = 'https://dms.ammedtech.com/login';
+            }
+        }, 800);
     };
 
     return (
-        <div className="min-h-screen bg-black flex justify-center items-center">
-            <div className="w-full max-w-[75%] min-h-screen bg-[#020c1b] flex flex-col items-center justify-center p-6 relative overflow-hidden shadow-2xl border-x border-slate-800/50">
-                {/* Background Effects */}
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#112240] via-[#020c1b] to-[#020c1b] z-0"></div>
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse z-0"></div>
+        <div className="min-h-screen w-full bg-[#020617] flex items-center justify-center p-4 relative overflow-hidden">
+            {/* Background Effects */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#00D4FF]/10 rounded-full blur-[120px]"></div>
+                <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#0072FF]/10 rounded-full blur-[120px]"></div>
+            </div>
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="relative z-10 w-full max-w-md bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-8 shadow-2xl shadow-cyan-900/20"
-                >
-                    <div className="flex justify-center mb-8">
-                        <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-500/20">
-                            <Activity className="text-white w-8 h-8" />
+            <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="w-full max-w-md relative z-10"
+            >
+                {/* Back Button */}
+                <Link href="/" className="inline-flex items-center text-slate-400 hover:text-[#00D4FF] transition-colors mb-8 group">
+                    <ArrowLeft size={20} className="mr-2 group-hover:-translate-x-1 transition-transform" />
+                    Back to Home
+                </Link>
+
+                {/* Login Card */}
+                <div className="bg-[#0B1221]/60 backdrop-blur-xl border border-[#00D4FF]/20 rounded-2xl p-8 shadow-2xl">
+                    <div className="text-center mb-8">
+                        <div className="w-16 h-16 bg-[#00D4FF]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-[#00D4FF]/20">
+                            <ShieldCheck className="text-[#00D4FF] w-8 h-8" />
                         </div>
+                        <h1 className="text-2xl font-bold text-white mb-2">Client Access</h1>
+                        <p className="text-slate-400 text-sm">Enter your Customer ID to access your dedicated portal.</p>
                     </div>
-
-                    <h2 className="text-3xl font-bold text-center text-white mb-2">Client Portal</h2>
-                    <p className="text-slate-400 text-center mb-8">Enter your company code to access your dedicated workspace.</p>
 
                     <form onSubmit={handleLogin} className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">Company Code / ID</label>
+                            <label htmlFor="customerId" className="block text-sm font-medium text-slate-300 mb-2">
+                                Customer ID / Company Code
+                            </label>
                             <div className="relative">
-                                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <Building2 className="h-5 w-5 text-slate-500" />
                                 </div>
                                 <input
                                     type="text"
-                                    value={companyCode}
-                                    onChange={(e) => setCompanyCode(e.target.value)}
-                                    className="w-full pl-11 pr-4 py-3 bg-[#0A192F] border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
-                                    placeholder="e.g. ANMINH"
-                                    required
+                                    id="customerId"
+                                    value={customerId}
+                                    onChange={(e) => {
+                                        setCustomerId(e.target.value);
+                                        setError('');
+                                    }}
+                                    className="block w-full pl-10 pr-3 py-3 bg-[#020617]/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00D4FF]/50 focus:border-[#00D4FF] transition-all"
+                                    placeholder="e.g. AM, CUST01"
+                                    autoFocus
                                 />
                             </div>
+                            {error && (
+                                <motion.p
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="mt-2 text-sm text-red-400 flex items-center"
+                                >
+                                    <span className="mr-1">⚠️</span> {error}
+                                </motion.p>
+                            )}
                         </div>
-
-                        {error && (
-                            <motion.div
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="p-3 bg-red-500/10 border border-red-500/20 rounded-lg flex items-center gap-2 text-red-400 text-sm"
-                            >
-                                <AlertCircle className="w-4 h-4" />
-                                {error}
-                            </motion.div>
-                        )}
 
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="w-full py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl font-bold text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                            className={`w-full py-3.5 px-4 bg-gradient-to-r from-[#00D4FF] to-[#0072FF] hover:from-[#00C4EF] hover:to-[#0062EF] text-white font-bold rounded-xl shadow-[0_0_20px_rgba(0,212,255,0.3)] hover:shadow-[0_0_30px_rgba(0,212,255,0.5)] transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
                         >
                             {isLoading ? (
-                                <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-                            ) : (
                                 <>
-                                    Access Portal <ArrowRight className="w-5 h-5" />
+                                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    Processing...
                                 </>
+                            ) : (
+                                'Access Portal'
                             )}
                         </button>
                     </form>
 
-                    <div className="mt-8 pt-6 border-t border-white/5 text-center">
-                        <p className="text-slate-500 text-sm">
-                            Need help? <a href="#" className="text-cyan-400 hover:underline">Contact Support</a>
+                    <div className="mt-6 text-center">
+                        <p className="text-xs text-slate-500">
+                            Protected by secure gateway. Unauthorized access is prohibited.
                         </p>
                     </div>
-                </motion.div>
-
-                <div className="absolute bottom-6 text-slate-600 text-xs">
-                    &copy; 2024 AM Medtech. Secure Login System.
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
-}
+};
+
+export default LoginPage;

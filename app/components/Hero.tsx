@@ -29,7 +29,7 @@ const Hero = () => {
             <HexagonBackground />
 
             {/* Main Content Area */}
-            <div className="relative z-10 flex-grow flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 pt-32 sm:pt-36 md:pt-40 pb-12 sm:pb-16 md:pb-20 lg:py-0">
+            <div className="relative z-10 flex-grow flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 pt-32 sm:pt-36 md:pt-40 pb-12 sm:pb-16 md:pb-20 lg:pt-48 lg:pb-20">
                 {/* Hero Text */}
                 <div className="mb-8 sm:mb-12 md:mb-16 max-w-4xl mx-auto md:mx-0 text-center md:text-left">
                     <motion.h1
