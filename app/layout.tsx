@@ -55,6 +55,8 @@ export const metadata: Metadata = {
   },
 };
 
+import SmoothScroll from "./components/SmoothScroll";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -66,6 +68,7 @@ export default function RootLayout({
         className={`${inter.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
+        <SmoothScroll />
         <Navbar />
         {children}
       </body>

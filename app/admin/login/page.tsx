@@ -35,7 +35,18 @@ export default function AdminLoginPage() {
         setTimeout(() => {
             if (username && password) {
                 console.log('Logging in with:', { username, rememberMe });
-                window.location.href = 'https://dms.ammedtech.com/admin/dashboard';
+
+                let baseUrl = 'https://dms.ammedtech.com';
+                if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+                    const port = window.location.port;
+                    if (port === '3500') {
+                        baseUrl = 'http://localhost:3599';
+                    } else {
+                        baseUrl = 'http://localhost:3099';
+                    }
+                }
+
+                window.location.href = `${baseUrl}/admin/dashboard`;
             } else {
                 setError('Invalid credentials. Please try again.');
                 setIsLoading(false);

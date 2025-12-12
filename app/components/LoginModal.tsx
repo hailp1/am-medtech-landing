@@ -30,16 +30,34 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             return;
         }
 
+        let baseUrl = 'https://dms.ammedtech.com';
+
+        // Check for local environment
+        // Check for local environment
+        if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+            const port = window.location.port;
+            console.log('🌍 Login Modal - Detected Local Environment:', window.location.hostname, 'Port:', port);
+
+            if (port === '3500') {
+                // Preproduction Environment (Docker)
+                // Admin/Backend is on 3599
+                baseUrl = 'http://localhost:3599';
+            } else {
+                // Default Dev Environment or other ports
+                baseUrl = 'http://localhost:3599';
+            }
+        }
+
         if (id === 'AM') {
             // Redirect to Admin Panel
-            const adminUrl = 'https://dms.ammedtech.com/Anminh/admin';
+            const adminUrl = `${baseUrl}/Anminh/admin`;
             console.log('✅ Login Modal - Redirecting to Admin Panel:', adminUrl);
             setTimeout(() => {
                 window.location.href = adminUrl;
             }, 500);
         } else {
             // Redirect to TDV Login (DMS)
-            const dmsUrl = 'https://dms.ammedtech.com';
+            const dmsUrl = baseUrl;
             console.log('✅ Login Modal - Redirecting to DMS:', dmsUrl);
             setTimeout(() => {
                 window.location.href = dmsUrl;
