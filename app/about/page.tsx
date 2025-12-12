@@ -124,7 +124,7 @@ const AboutPage = () => {
                             <TeamMember
                                 image="/team/vy.jpg"
                                 name="Vy Luu"
-                                experience="E-commerce Expert. Vy leads E-commerce at Zeta MCN, driving strategic growth and the company’s livestream ecosystem. With 5+ years of experience, she has delivered record-breaking livestream GMV and collaborated with major brands including L’Oréal Paris and Whoo. She previously held roles as E-commerce Manager at OLALA Media and Senior Business Development at Melive MCN. Vy also brings strong expertise in Shopee KOL/KOC management, affiliate operations, team development, and KPI optimization (CTR, CO, GPM, PCU)."
+                                experience="E-commerce Expert. Vy leads E-commerce at Zeta MCN, driving strategic growth and strengthening the company’s livestream ecosystem. With over five years of experience, she has delivered record-breaking livestream GMV and collaborated with major brands including L’Oréal Paris, Whoo, Innisfree, Biodance, Format, among others. Previously, she served as E-commerce Manager at OLALA Media and Senior KOL Affiliate Marketing at Shopee Vietnam, where she managed large-scale livestream and digital commerce initiatives. Vy also brings strong expertise in Shopee KOL/KOC management, affiliate operations, team development, and KPI optimization across GMV, CTR, CO, GPM, and PCU."
                                 education="Bachelor of Business Administration."
                                 delay={0.6}
                             />
