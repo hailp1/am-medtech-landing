@@ -99,6 +99,12 @@ const About = () => {
                             desc="Over 10 years of experience in training management, capability development, and distribution channels at Coca-Cola Vietnam and Mondelez Kinh Do Vietnam. Master of Economics."
                             delay={0.5}
                         />
+                        <TeamMember
+                            image="/image/team/vy.jpg"
+                            name="Vy Luu"
+                            desc="E-commerce Expert. Vy leads E-commerce at Zeta MCN, driving strategic growth and the company’s livestream ecosystem. With 5+ years of experience, she has delivered record-breaking livestream GMV and collaborated with major brands including L’Oréal Paris and Whoo. She previously held roles as E-commerce Manager at OLALA Media and Senior Business Development at Melive MCN. Vy also brings strong expertise in Shopee KOL/KOC management, affiliate operations, team development, and KPI optimization (CTR, CO, GPM, PCU)."
+                            delay={0.6}
+                        />
                     </div>
                 </div>
             </div>

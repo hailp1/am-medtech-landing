@@ -121,6 +121,13 @@ const AboutPage = () => {
                                 education="Master of Economics."
                                 delay={0.5}
                             />
+                            <TeamMember
+                                image="/team/vy.jpg"
+                                name="Vy Luu"
+                                experience="E-commerce Expert. Vy leads E-commerce at Zeta MCN, driving strategic growth and the company’s livestream ecosystem. With 5+ years of experience, she has delivered record-breaking livestream GMV and collaborated with major brands including L’Oréal Paris and Whoo. She previously held roles as E-commerce Manager at OLALA Media and Senior Business Development at Melive MCN. Vy also brings strong expertise in Shopee KOL/KOC management, affiliate operations, team development, and KPI optimization (CTR, CO, GPM, PCU)."
+                                education="Cử nhân quản trị kinh doanh."
+                                delay={0.6}
+                            />
                         </div>
                     </div>
                 </div>
@@ -158,7 +165,7 @@ interface TeamMemberProps {
     image: string;
     name: string;
     experience: string;
-    education: string;
+    education?: string;
     delay: number;
 }
 
@@ -199,17 +206,19 @@ const TeamMember = ({ image, name, experience, education, delay }: TeamMemberPro
                 </div>
 
                 {/* Education Section */}
-                <div className="flex gap-3 pt-4 border-t border-white/5">
-                    <div className="mt-1 min-w-[20px]">
-                        <GraduationCap size={18} className="text-cyan-400" />
+                {education && (
+                    <div className="flex gap-3 pt-4 border-t border-white/5">
+                        <div className="mt-1 min-w-[20px]">
+                            <GraduationCap size={18} className="text-cyan-400" />
+                        </div>
+                        <div>
+                            <h5 className="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-1">Education</h5>
+                            <p className="text-slate-300 text-sm leading-relaxed">
+                                {education}
+                            </p>
+                        </div>
                     </div>
-                    <div>
-                        <h5 className="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-1">Education</h5>
-                        <p className="text-slate-300 text-sm leading-relaxed">
-                            {education}
-                        </p>
-                    </div>
-                </div>
+                )}
             </div>
         </div>
     </motion.div>
