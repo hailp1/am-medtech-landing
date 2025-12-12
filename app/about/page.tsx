@@ -89,6 +89,7 @@ const AboutPage = () => {
                             <TeamMember
                                 image="/team/hai.png"
                                 name="Lê Phúc Hải"
+                                role="Founder & CIO"
                                 experience="Over 10 years of experience in business administration, distribution channel development, and commercial capability at Coca-Cola Vietnam, Mondelez Kinh Do Vietnam, and Japfa Comfeed Vietnam. Former National Capability Manager at Mega Lifesciences. Digital Transformation Advisor for Ladophar."
                                 education="PhD Candidate in Economics."
                                 delay={0.1}
@@ -96,6 +97,7 @@ const AboutPage = () => {
                             <TeamMember
                                 image="/team/hung.png"
                                 name="Phạm Thái Hưng"
+                                role="Pharma Strategy Advisor"
                                 experience="Over 15 years of experience in strategic management at major pharmaceutical corporations in Vietnam. Chairman of An Minh Pharmacy & Clinic System."
                                 education="Master of Economics, Pharmacist."
                                 delay={0.2}
@@ -103,6 +105,7 @@ const AboutPage = () => {
                             <TeamMember
                                 image="/image/duc.png"
                                 name="Đức Trần"
+                                role="Technology Architect"
                                 experience="Over 10 years of experience managing software development teams. Former Head of Mobile App Development at Pharmacity."
                                 education="Certified Chief Information Officer (CIO)."
                                 delay={0.3}
@@ -110,6 +113,7 @@ const AboutPage = () => {
                             <TeamMember
                                 image="/team/chau.jpg"
                                 name="Châu Carmen"
+                                role="HR & Organizational Culture Expert"
                                 experience="Over 10 years of experience in B2B management consulting and management psychology. Author of 10 scientific papers on management, human resources, and organizational culture."
                                 education="PhD Candidate in Business Management."
                                 delay={0.4}
@@ -117,6 +121,7 @@ const AboutPage = () => {
                             <TeamMember
                                 image="/team/tin.jpg"
                                 name="Tín Nguyễn"
+                                role="Distribution Training & Development Expert"
                                 experience="Over 10 years of experience in training management, capability development, and distribution channels at Coca-Cola Vietnam and Mondelez Kinh Do Vietnam."
                                 education="Master of Economics."
                                 delay={0.5}
@@ -124,6 +129,7 @@ const AboutPage = () => {
                             <TeamMember
                                 image="/team/vy.jpg"
                                 name="Vy Luu"
+                                role="E-commerce Expert"
                                 experience="E-commerce Expert. Vy leads E-commerce at Zeta MCN, driving strategic growth and strengthening the company’s livestream ecosystem. With over five years of experience, she has delivered record-breaking livestream GMV and collaborated with major brands including L’Oréal Paris, Whoo, Innisfree, Biodance, Format, among others. Previously, she served as E-commerce Manager at OLALA Media and Senior KOL Affiliate Marketing at Shopee Vietnam, where she managed large-scale livestream and digital commerce initiatives. Vy also brings strong expertise in Shopee KOL/KOC management, affiliate operations, team development, and KPI optimization across GMV, CTR, CO, GPM, and PCU."
                                 education="Bachelor of Business Administration."
                                 delay={0.6}
@@ -164,12 +170,13 @@ const AboutCard = ({ icon, title, desc, delay }: AboutCardProps) => (
 interface TeamMemberProps {
     image: string;
     name: string;
+    role: string;
     experience: string;
     education?: string;
     delay: number;
 }
 
-const TeamMember = ({ image, name, experience, education, delay }: TeamMemberProps) => (
+const TeamMember = ({ image, name, role, experience, education, delay }: TeamMemberProps) => (
     <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -188,7 +195,8 @@ const TeamMember = ({ image, name, experience, education, delay }: TeamMemberPro
 
         {/* Content */}
         <div className="bg-[#112240]/50 backdrop-blur-sm border border-white/5 p-6 rounded-2xl w-full hover:border-cyan-500/30 transition-all flex flex-col flex-grow">
-            <h4 className="text-xl font-bold text-white mb-3">{name}</h4>
+            <h4 className="text-xl font-bold text-white mb-1">{name}</h4>
+            <p className="text-cyan-400 text-sm font-medium mb-4 uppercase tracking-wider">{role}</p>
             <div className="h-0.5 w-12 bg-cyan-500 mx-auto mb-6 rounded-full"></div>
 
             <div className="space-y-4 text-left">
